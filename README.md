@@ -28,5 +28,5 @@ voxelData = ITKIOWrapper.loadVoxelData("filepath",spatialMeta)
 voxelData.dat
 ```
 
-end
+
 

@@ -1,6 +1,6 @@
 name = "ITKIOWrapper"
 uuid = "8538b10a-c1b7-4e8d-b607-b3a5053e6a1f"
-authors = ["hurtbadly <divita2004@gmail.com>"]
+authors = ["Divyansh-Goyal <divita2004@gmail.com>"]
 version = "0.0.1"
 
 [deps]
@@ -9,4 +9,4 @@ ITKIOWrapper_jll = "b6265aa4-802f-522b-a8eb-4519ac77ab09"
 
 [compat]
 CxxWrap = "0.16.0"
-julia = "1.6 - 1.10"
+julia = "1.6 - 1.11"

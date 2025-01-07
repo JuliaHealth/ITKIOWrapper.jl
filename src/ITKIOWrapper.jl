@@ -16,6 +16,7 @@ end
 function loadSpatialMetaData(filePath::String)
 
   img = ITKImageWrapper(filePath, isdir(filePath)) #second argument is "isDicom"
+  ITKIOWrapper.reorientToLPS(img)
   imgOrigin = Tuple(Float64.(getOrigin(img)))
   imgSpacing = Tuple(Float64.(getSpacing(img)))
   imgSize = Tuple(Int64.(getSize(img)))

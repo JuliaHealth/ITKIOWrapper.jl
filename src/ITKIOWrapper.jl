@@ -26,6 +26,7 @@ end
 
 function loadVoxelData(filePath::String, spatMeta::DataStructs.SpatialMetaData)
   img = ITKImageWrapper(filePath, isdir(filePath))
+  ITKIOWrapper.reorientToLPS(img)
   voxelData = reshape(getPixelData(img), spatMeta.size)
   return DataStructs.VoxelData(voxelData)
 end

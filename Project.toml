@@ -1,7 +1,7 @@
 name = "ITKIOWrapper"
 uuid = "8538b10a-c1b7-4e8d-b607-b3a5053e6a1f"
 authors = ["Divyansh-Goyal <divita2004@gmail.com>"]
-version = "0.0.2"
+version = "0.0.3"
 
 [deps]
 CxxWrap = "1f15a43c-97ca-5a2a-ae31-89f07a497df4"

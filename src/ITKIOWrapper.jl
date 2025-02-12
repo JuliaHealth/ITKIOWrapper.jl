@@ -11,16 +11,21 @@ function __init__()
 end
 
 function load_image(filePath::String)
-    return ITKImageWrapper(filePath, isdir(filePath))
+    image = ITKImageWrapper(filePath, isdir(filePath))
+    reorientToLPS(image)  # Use dot notation
+    return image
 end
 
-function output_image(srcFile::String, outputFilename::String, isDicomOutput::Bool=false)
+function output_image(src::String, outputFilename::String, isDicomOutput::Bool=false)
     img = ITKImageWrapper(src, isdir(src))
-    # Use the wrapped function directly
+    reorientToLPS(img)
+    if isDicomOutput
+        mkpath(outputFilename)
+    end
     writeImage(img, outputFilename, isDicomOutput)
 end
     
-function load_spatial_metadata(img::ITKImageWrapperAllocated)  # Note the type change
+function load_spatial_metadata(img::ITKImageWrapper)  # Remove Allocated suffix
     imgOrigin = Tuple(Float64.(getOrigin(img)))
     imgSpacing = Tuple(Float64.(getSpacing(img)))
     imgSize = Tuple(Int64.(getSize(img)))
@@ -28,7 +33,7 @@ function load_spatial_metadata(img::ITKImageWrapperAllocated)  # Note the type c
     return DataStructs.SpatialMetaData(imgOrigin, imgSpacing, imgSize, imgDirection)
 end
 
-function load_voxel_data(img::ITKImageWrapperAllocated, spatMeta::DataStructs.SpatialMetaData)  # Note the type change
+function load_voxel_data(img::ITKImageWrapper, spatMeta::DataStructs.SpatialMetaData)  # Remove Allocated suffix
     voxelData = reshape(getPixelData(img), spatMeta.size)
     return DataStructs.VoxelData(voxelData)
 end

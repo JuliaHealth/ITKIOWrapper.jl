@@ -9,5 +9,5 @@ ITKIOWrapper_jll = "b6265aa4-802f-522b-a8eb-4519ac77ab09"
 
 [compat]
 CxxWrap = "0.16.0"
-ITKIOWrapper_jll = "3.0.0"
+ITKIOWrapper_jll = "3.0.1"
 julia = "1.6 - 1.11"

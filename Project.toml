@@ -1,7 +1,7 @@
 name = "ITKIOWrapper"
 uuid = "8538b10a-c1b7-4e8d-b607-b3a5053e6a1f"
 authors = ["Divyansh-Goyal <divita2004@gmail.com>"]
-version = "0.0.3"
+version = "3.0.0"
 
 [deps]
 CxxWrap = "1f15a43c-97ca-5a2a-ae31-89f07a497df4"
@@ -9,4 +9,5 @@ ITKIOWrapper_jll = "b6265aa4-802f-522b-a8eb-4519ac77ab09"
 
 [compat]
 CxxWrap = "0.16.0"
+ITKIOWrapper_jll = "3.0.1"
 julia = "1.6 - 1.11"

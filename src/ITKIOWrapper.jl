@@ -12,13 +12,13 @@ end
 
 function load_image(filePath::String)
     image = ITKImageWrapper(filePath, isdir(filePath))
-    reorientToLPS(image)  # Use dot notation
+#    reorientToLPS(image)  # Use dot notation
     return image
 end
 
 function output_image(src::String, outputFilename::String, isDicomOutput::Bool=false)
     img = ITKImageWrapper(src, isdir(src))
-    reorientToLPS(img)
+ #   reorientToLPS(img)
     if isDicomOutput
         mkpath(outputFilename)
     end

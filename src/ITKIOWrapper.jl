@@ -18,13 +18,13 @@ function load_image(filePath::String)
     return image
 end
 
-function output_image(src::String, outputFilename::String, isDicomOutput::Bool=false)
+function dicom_nifti_conversion(src::String, outputFilename::String, isDicomOutput::Bool=false)
     img = ITKImageWrapper(src, isdir(src))
     reorientToLPS(img)
     if isDicomOutput
         mkpath(outputFilename)
     end
-    writeImage(img, outputFilename, isDicomOutput)
+    dcmNftInterchange(img, outputFilename, isDicomOutput)
 end
     
 function load_spatial_metadata(img::ITKImageWrapper)  # Remove Allocated suffix

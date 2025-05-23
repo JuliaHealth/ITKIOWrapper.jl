@@ -158,45 +158,7 @@ Contains geometric information about the image:
 Contains the actual image data:
 - `dat`: Multidimensional array containing the voxel values
 
-## Advanced Examples
-
-### Resampling an Image (with ITK)
-
-```julia
-# Load source image
-source_img = load_image("source.nii.gz")
-source_metadata = load_spatial_metadata(source_img)
-source_data = load_voxel_data(source_img, source_metadata)
-
-# Define new image specifications (2x resolution in all dimensions)
-new_spacing = (
-    source_metadata.spacing[1] / 2,
-    source_metadata.spacing[2] / 2, 
-    source_metadata.spacing[3] / 2
-)
-new_size = (
-    source_metadata.size[1] * 2,
-    source_metadata.size[2] * 2,
-    source_metadata.size[3] * 2
-)
-
-# Create new metadata
-new_metadata = DataStructs.SpatialMetaData(
-    source_metadata.origin,
-    new_spacing,
-    new_size,
-    source_metadata.direction
-)
-
-# Create and save (through custom code using ITK's resampling functions)
-# ... your resampling code here ...
-
-# Save the resampled image
-save_image(resampled_data, new_metadata, "resampled.nii.gz")
-```
-
 ## Notes
 
 - All images are automatically reoriented to LPS (Left-Posterior-Superior) coordinate system when loaded
 - The library handles both NIFTI (.nii, .nii.gz) and DICOM series inputs and outputs
-- This package requires ITK to be installed via the ITKIOWrapper_jll dependency
